@@ -1,4 +1,4 @@
-define([], function() {
+define(['sweetAlert'], function(swal) {
 
     'use strict';
 
@@ -112,7 +112,7 @@ define([], function() {
                 icon.className = 'fa fa-info-circle';
                 icon.style.float = 'right';
                 icon.onclick = function() {
-                    window.sweetAlert({
+                    swal({
                         title: '',
                         type: 'info',
                         text: description.innerHTML,

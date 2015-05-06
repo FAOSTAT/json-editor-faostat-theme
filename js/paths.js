@@ -3,7 +3,8 @@ define(function() {
     var config = {
         paths: {
             FAOSTAT_THEME: 'faostat-theme',
-            faostat_theme: '../'
+            faostat_theme: '../',
+            sweetAlert: 'https://cdnjs.cloudflare.com/ajax/libs/sweetalert/0.5.0/sweet-alert.min'
         },
         shim: {
             bootstrap: {
