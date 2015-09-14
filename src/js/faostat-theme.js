@@ -1,4 +1,5 @@
-define(['sweetAlert'], function(swal) {
+/*global define, document*/
+define(['sweetAlert'], function (swal) {
 
     'use strict';
 
@@ -7,9 +8,9 @@ define(['sweetAlert'], function(swal) {
         this.CONFIG = {
 
             /* Override this to edit group's descriptions. */
-            getHeader: function(text) {
+            getHeader: function (text) {
                 var el = document.createElement('h3');
-                if(typeof text === 'string') {
+                if (typeof text === 'string') {
                     el.textContent = text;
                 } else {
                     el.appendChild(text);
@@ -18,7 +19,7 @@ define(['sweetAlert'], function(swal) {
             },
 
             /* Override this to edit group's descriptions. */
-            getDescription: function(text) {
+            getDescription: function (text) {
                 var el = document.createElement('p');
                 //el.innerHTML = text;
                 el.innerHTML = '';
@@ -63,55 +64,69 @@ define(['sweetAlert'], function(swal) {
 
             getFormControl: function (label, input, description) {
 
-                if (label.innerHTML == 'Resource identification code') {
-                    //console.log(label.innerHTML);
-                    //console.log(input);
-                    //console.log(description.innerHTML);
-                }
-
                 var group = document.createElement('div');
+                var left = document.createElement('div');
+                var right = document.createElement('div');
+                group.className += 'row';
+                left.className += 'col-lg-3';
+                right.className += 'col-lg-9';
+                label.style.lineHeight = '28px';
+                left.appendChild(label);
+                right.appendChild(input);
+                group.appendChild(left);
+                group.appendChild(right);
 
-                if (label && input.type === 'checkbox') {
-                    group.className += ' checkbox';
-                    label.appendChild(input);
-                    label.style.fontSize = '14px';
-                    group.style.marginTop = '0';
-                    group.appendChild(label);
-
-                    /* Custom implementation for the description field. */
-                    if (description)
-                        group.appendChild(this.createDescription(description));
-
-                    input.style.position = 'relative';
-                    input.style.cssFloat = 'left';
-                }
-
-                else {
-
-                    group.className += ' form-group';
-
-                    if (label) {
-                        label.className += ' control-label';
-                        group.appendChild(label);
-                    }
-
-                    /* Custom implementation for the description field. */
-                    if (description)
-                        group.appendChild(this.createDescription(description));
-
-                    group.appendChild(input);
-
-                }
+                //if (label.innerHTML == 'Resource identification code') {
+                //    //console.log(label.innerHTML);
+                //    //console.log(input);
+                //    //console.log(description.innerHTML);
+                //}
+                //
+                //var group = document.createElement('div');
+                //
+                //if (label && input.type === 'checkbox') {
+                //
+                //    group.className += ' checkbox';
+                //    label.appendChild(input);
+                //    label.style.fontSize = '14px';
+                //    group.style.marginTop = '0';
+                //    group.appendChild(label);
+                //
+                //    /* Custom implementation for the description field. */
+                //    if (description)
+                //        group.appendChild(this.createDescription(description));
+                //
+                //    input.style.position = 'relative';
+                //    input.style.cssFloat = 'left';
+                //
+                //}
+                //
+                //else {
+                //
+                //    group.className += ' form-group';
+                //
+                //    if (label) {
+                //        label.className += ' control-label';
+                //        group.appendChild(label);
+                //    }
+                //
+                //    /* Custom implementation for the description field. */
+                //    if (description)
+                //        group.appendChild(this.createDescription(description));
+                //
+                //    group.appendChild(input);
+                //
+                //}
 
                 return group;
 
             },
 
-            createDescription: function(description) {
+            createDescription: function (description) {
                 var icon = document.createElement('i');
                 icon.className = 'fa fa-info-circle';
                 icon.style.float = 'right';
-                icon.onclick = function() {
+                icon.onclick = function () {
                     swal({
                         title: '',
                         type: 'info',
@@ -143,8 +158,8 @@ define(['sweetAlert'], function(swal) {
 
             getButtonHolder: function () {
                 var el = document.createElement('div');
-                el.className = 'btn-group';
-                el.style.float = 'right';
+                el.className = 'btn-group pull-right text-right';
+                //el.style.float = 'right';
                 return el;
             },
 
